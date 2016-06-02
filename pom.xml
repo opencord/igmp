@@ -68,11 +68,10 @@
             <version>${onos.version}</version>
         </dependency>
         
-        <!-- FIXME when cord-config is pulled to opencord -->
         <dependency>
-            <groupId>org.onosproject</groupId>
-            <artifactId>onos-cord-config</artifactId>
-            <version>${onos.version}</version>
+            <groupId>org.opencord</groupId>
+            <artifactId>config</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
