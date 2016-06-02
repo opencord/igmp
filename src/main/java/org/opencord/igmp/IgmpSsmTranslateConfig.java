@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.onosproject.igmp;
+package org.opencord.igmp;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;

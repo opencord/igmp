@@ -17,4 +17,4 @@
 /**
  * IGMP implementation.
  */
-package org.onosproject.igmp;
+package org.opencord.igmp;
