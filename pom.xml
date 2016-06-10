@@ -49,7 +49,7 @@
         <onos.app.category>Traffic Steering</onos.app.category>
         <onos.app.url>http://opencord.org</onos.app.url>
         <onos.app.readme>IGMP implementation.</onos.app.readme>
-        <onos.app.requires>org.onosproject.cord-config</onos.app.requires>
+        <onos.app.requires>org.opencord.config</onos.app.requires>
     </properties>
 
     <dependencies>
@@ -79,7 +79,7 @@
         
         <dependency>
             <groupId>org.opencord</groupId>
-            <artifactId>config</artifactId>
+            <artifactId>cord-config</artifactId>
             <version>${project.version}</version>
         </dependency>
 
