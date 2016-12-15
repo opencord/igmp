@@ -373,7 +373,7 @@ public class IgmpSnoop {
     }
 
     private ByteBuffer buildQueryPacket() {
-        IGMP igmp = new IGMP();
+        IGMP igmp = new IGMP.IGMPv3();
         igmp.setIgmpType(IGMP.TYPE_IGMPV3_MEMBERSHIP_QUERY);
         igmp.setMaxRespCode(maxRespCode);
 
