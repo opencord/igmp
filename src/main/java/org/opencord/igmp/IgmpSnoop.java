@@ -90,6 +90,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 @Component(immediate = true)
 public class IgmpSnoop {
+    private static final String APP_NAME = "org.opencord.igmp";
 
     private final Logger log = getLogger(getClass());
 
@@ -182,7 +183,7 @@ public class IgmpSnoop {
         componentConfigService.registerProperties(getClass());
         modified(context);
 
-        appId = coreService.registerApplication("org.onosproject.igmp");
+        appId = coreService.registerApplication(APP_NAME);
 
         packetService.addProcessor(processor, PacketProcessor.director(1));
 
