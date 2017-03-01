@@ -96,7 +96,7 @@ public class IgmpSnoop {
 
     private static final String DEST_MAC = "01:00:5E:00:00:01";
     private static final String DEST_IP = "224.0.0.1";
-
+    private static final byte[] ROUTE_ALERT_BYTES = {(byte) 0x94, (byte) 0x04, (byte) 0x00, (byte) 0x00};
     private static final int DEFAULT_QUERY_PERIOD_SECS = 60;
     private static final byte DEFAULT_IGMP_RESP_CODE = 100;
 
@@ -111,6 +111,10 @@ public class IgmpSnoop {
     @Property(name = "maxRespCode", byteValue = DEFAULT_IGMP_RESP_CODE,
             label = "Maximum time allowed before sending a responding report")
     private byte maxRespCode = DEFAULT_IGMP_RESP_CODE;
+
+    @Property(name = "routeAlert", boolValue = false,
+            label = "add Route Alert in igmp query header or not")
+    private boolean routerAlert = false;
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY_UNARY)
     protected FlowObjectiveService flowObjectiveService;
@@ -247,6 +251,7 @@ public class IgmpSnoop {
         // TODO read multicastAddress from config
         String strQueryPeriod = Tools.get(properties, "queryPeriod");
         String strResponseCode = Tools.get(properties, "maxRespCode");
+        String strRouteAlert = Tools.get(properties, "routeAlert");
         try {
             byte newMaxRespCode = Byte.parseByte(strResponseCode);
             if (maxRespCode != newMaxRespCode) {
@@ -258,6 +263,12 @@ public class IgmpSnoop {
             if (newQueryPeriod != queryPeriod) {
                 queryPeriod = newQueryPeriod;
                 restartQueryTask();
+            }
+
+            boolean newRouteAlert = Boolean.parseBoolean(strRouteAlert);
+            if (newRouteAlert != routerAlert) {
+                routerAlert = newRouteAlert;
+                queryPacket = buildQueryPacket();
             }
 
         } catch (NumberFormatException e) {
@@ -387,6 +398,10 @@ public class IgmpSnoop {
         ip.setSourceAddress("192.168.1.1");
         ip.setTtl((byte) 1);
         ip.setPayload(igmp);
+
+        if (routerAlert) {
+            ip.setOptions(ROUTE_ALERT_BYTES);
+        }
 
         Ethernet eth = new Ethernet();
         eth.setDestinationMACAddress(DEST_MAC);
