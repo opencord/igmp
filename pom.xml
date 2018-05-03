@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.onosproject</groupId>
         <artifactId>onos-dependencies</artifactId>
-        <version>1.10.6</version>
+        <version>1.13.1</version>
         <relativePath></relativePath>
     </parent>
 
@@ -35,15 +35,13 @@
 
     <properties>
         <onos.app.name>org.opencord.igmp</onos.app.name>
-        <onos.version>1.10.6</onos.version>
+        <onos.version>1.13.1</onos.version>
         <onos.app.title>IGMP App</onos.app.title>
         <onos.app.category>Traffic Steering</onos.app.category>
         <onos.app.url>http://opencord.org</onos.app.url>
         <onos.app.readme>IGMP implementation.</onos.app.readme>
-	<onos.app.requires>org.opencord.config</onos.app.requires>
+	    <onos.app.requires>org.opencord.config</onos.app.requires>
         <cord.config.version>1.4.0-SNAPSHOT</cord.config.version>
-        <!-- TODO onos-build-conf.version can be dropped when onos.version > 1.10.3 -->
-        <onos-build-conf.version>1.10.3-onf</onos-build-conf.version>
     </properties>
 
     <dependencies>
@@ -83,7 +81,7 @@
             <artifactId>onos-incubator-api</artifactId>
             <version>${onos.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.onosproject</groupId>
             <artifactId>onos-incubator-net</artifactId>
@@ -136,7 +134,7 @@
             <plugin>
                 <groupId>org.onosproject</groupId>
                 <artifactId>onos-maven-plugin</artifactId>
-                <version>1.7</version>
+                <version>1.11</version>
                 <executions>
                     <execution>
                         <id>cfg</id>
